@@ -1,3 +1,4 @@
+/* API Flickr para imagen de fondo */
 fetch('https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=c60c3fa5fe3d5aec17baf1cc7495e1db&per_page=10&format=json&nojsoncallback=1')
   .then(function (response) {
     //Turns the the JSON into a JS object
@@ -16,12 +17,14 @@ fetch('https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_
       backgroundImage.appendChild(image);
 })
 
+/* Revisando si mi navegador soporta geolocalización */
  if ("geolocation" in navigator) {
   //alert('Tu navegador soporta geolocalización');
 } else {
   //alert('Tu navegador no soporta geolocalización');
 }
 
+/* Buscando mi ubicación */
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       pos = {
@@ -29,6 +32,7 @@ fetch('https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_
         lng: position.coords.longitude
       };
 
+/* API Darksky Predicción del clima */
 fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/9cdb8119e61f583c61178e5b9359792d/'+pos.lat+','+pos.lng)
 .then(function(respuesta) {
   // Convertir a JSON
@@ -38,29 +42,71 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/9cdb
   // Ahora 'j' es un objeto JSON
   console.log(resp);
 
+/* Título del contenedor de los datos del clima */
 let respuesta = document.getElementById('respuesta');
 let etiquetaTitle = document.createElement('h1');
 let title = document.createTextNode('HOY');
 etiquetaTitle.appendChild(title);
 respuesta.appendChild(etiquetaTitle);
-let weather = document.getElementById('listWeather');
-weather.setAttribute('class', 'weather');
-let wind = document.createElement('li');
-let viento = document.createTextNode('Viento');
-wind.appendChild(viento);
-let liHumidity = document.createElement('li');
-let humedad = document.createTextNode('Humedad');
-liHumidity.appendChild(humedad);
-let indexUv = document.createElement('li');
-let indice = document.createTextNode('Indice UV');
-indexUv.appendChild(indice);
-let liPressure = document.createElement('li');
-let presion = document.createTextNode('Presión');
-liPressure.appendChild(presion);
-weather.appendChild(wind);
-weather.appendChild(liHumidity);
-weather.appendChild(indexUv);
-weather.appendChild(liPressure);
+
+/* DOM Insertando temperatura desde la Api darksky */
+let temperature = document.getElementById('temperature');
+let textTemperature = document.createTextNode(resp.currently.apparentTemperature+ '°');
+temperature.appendChild(textTemperature);
+
+/* DOM Insertando viento desde la Api darksky */
+let wind = document.getElementById('wind');
+let labelWind = document.createElement('label');
+labelWind.setAttribute('style','float:left');
+labelWind.setAttribute('class','texto');
+let titleWind = document.createTextNode('Viento');
+let pWind =  document.createElement('p');
+let textWind = document.createTextNode(resp.currently.windSpeed+ 'm/s');
+pWind.appendChild(textWind);
+labelWind.appendChild(titleWind);
+wind.appendChild(labelWind);
+wind.appendChild(pWind);
+
+/* DOM Insertando humedad desde la Api darksky */
+let humidity = document.getElementById('humidity');
+let labelHumidity = document.createElement('label');
+labelHumidity.setAttribute('style','float:left');
+labelHumidity.setAttribute('class','texto');
+let titleHumidity = document.createTextNode('Humedad');
+let pHumidity =  document.createElement('p');
+let textHumidity = document.createTextNode(resp.currently.humidity+ '%');
+pHumidity.appendChild(textHumidity);
+labelHumidity.appendChild(titleHumidity);
+humidity.appendChild(labelHumidity);
+humidity.appendChild(pHumidity);
+
+/* DOM Insertando index uv desde la Api darksky */
+let indexUv = document.getElementById('indexUv');
+let labelIndexUv = document.createElement('label');
+labelIndexUv.setAttribute('style','float:left');
+labelIndexUv.setAttribute('class','texto');
+let titleIndexUv = document.createTextNode('Index UV');
+let pIndexUv =  document.createElement('p');
+let textIndexUv = document.createTextNode(resp.currently.uvIndex);
+pIndexUv.appendChild(textIndexUv);
+labelIndexUv.appendChild(titleIndexUv);
+indexUv.appendChild(labelIndexUv);
+indexUv.appendChild(pIndexUv);
+
+/* DOM Insertando presión desde la Api darksky */
+let pressure = document.getElementById('pressure');
+let labelPressure = document.createElement('label');
+labelPressure.setAttribute('style','float:left');
+labelPressure.setAttribute('class','texto');
+let titlePressure = document.createTextNode('Presión');
+let pPressure =  document.createElement('p');
+let textPressure = document.createTextNode(resp.currently.pressure+ 'hPa');
+pPressure .appendChild(textPressure );
+labelPressure .appendChild(titlePressure );
+pressure .appendChild(labelPressure );
+pressure .appendChild(pPressure );
+
+
 });
 })
 }
