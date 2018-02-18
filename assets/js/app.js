@@ -51,60 +51,81 @@ respuesta.appendChild(etiquetaTitle);
 
 /* DOM Insertando temperatura desde la Api darksky */
 let temperature = document.getElementById('temperature');
-let textTemperature = document.createTextNode(resp.currently.apparentTemperature+ '°');
+let Celsius = (((((resp.currently.apparentTemperature) - 32))*5)/9).toFixed(0);
+let textTemperature = document.createTextNode(Celsius+ '°');
+console.log(textTemperature);
 temperature.appendChild(textTemperature);
 
 /* DOM Insertando viento desde la Api darksky */
+
+//Palabra Wind
 let wind = document.getElementById('wind');
-let labelWind = document.createElement('label');
-labelWind.setAttribute('style','float:left');
-labelWind.setAttribute('class','texto');
-let titleWind = document.createTextNode('Viento');
-let pWind =  document.createElement('p');
-let textWind = document.createTextNode(resp.currently.windSpeed+ 'm/s');
-pWind.appendChild(textWind);
-labelWind.appendChild(titleWind);
-wind.appendChild(labelWind);
-wind.appendChild(pWind);
+let pWInd = document.createElement('p');
+let titleWind = document.createTextNode('Wind');
+pWInd.appendChild(titleWind);
+let divTitleWind = document.createElement('div');
+divTitleWind.appendChild(pWInd);
+wind.appendChild(divTitleWind);
+
+let pvalueWind = document.createElement('p');
+let valueWind = document.createTextNode(resp.currently.windSpeed+ ' m/s');
+pvalueWind.appendChild(valueWind);
+let divpvalueWind = document.createElement('div');
+divpvalueWind.appendChild(pvalueWind);
+wind.appendChild(divpvalueWind);
+
 
 /* DOM Insertando humedad desde la Api darksky */
 let humidity = document.getElementById('humidity');
-let labelHumidity = document.createElement('label');
-labelHumidity.setAttribute('style','float:left');
-labelHumidity.setAttribute('class','texto');
-let titleHumidity = document.createTextNode('Humedad');
-let pHumidity =  document.createElement('p');
+let phumidity = document.createElement('p');
+let titleHumidity = document.createTextNode('Humidity');
+phumidity.appendChild(titleHumidity);
+let divtitleHumidity = document.createElement('div');
+divtitleHumidity.appendChild(phumidity);
+humidity.appendChild(divtitleHumidity);
+
 let textHumidity = document.createTextNode(resp.currently.humidity+ '%');
-pHumidity.appendChild(textHumidity);
-labelHumidity.appendChild(titleHumidity);
-humidity.appendChild(labelHumidity);
-humidity.appendChild(pHumidity);
+let ptextHumidity = document.createElement('p');
+let divtextHumidity = document.createElement('div');
+ptextHumidity.appendChild(textHumidity);
+divtextHumidity.appendChild(ptextHumidity);
+humidity.appendChild(divtextHumidity);
+
+
 
 /* DOM Insertando index uv desde la Api darksky */
-let indexUv = document.getElementById('indexUv');
-let labelIndexUv = document.createElement('label');
-labelIndexUv.setAttribute('style','float:left');
-labelIndexUv.setAttribute('class','texto');
+let pUV = document.createElement('p');
+let divUv = document.createElement('div');
 let titleIndexUv = document.createTextNode('Index UV');
-let pIndexUv =  document.createElement('p');
-let textIndexUv = document.createTextNode(resp.currently.uvIndex);
-pIndexUv.appendChild(textIndexUv);
-labelIndexUv.appendChild(titleIndexUv);
-indexUv.appendChild(labelIndexUv);
-indexUv.appendChild(pIndexUv);
+pUV.appendChild(titleIndexUv);
+divUv.appendChild(pUV);
+let indexUv = document.getElementById('indexUv');
+indexUv.appendChild(divUv);
+
+let pIndexuv = document.createElement('p');
+let divIndexuv = document.createElement('div');
+let IndexUvv = document.createTextNode(resp.currently.uvIndex);
+pIndexuv.appendChild(IndexUvv);
+divIndexuv.appendChild(pIndexuv);
+indexUv.appendChild(divIndexuv);
+
 
 /* DOM Insertando presión desde la Api darksky */
 let pressure = document.getElementById('pressure');
-let labelPressure = document.createElement('label');
-labelPressure.setAttribute('style','float:left');
-labelPressure.setAttribute('class','texto');
-let titlePressure = document.createTextNode('Presión');
-let pPressure =  document.createElement('p');
+let pPressure = document.createElement('p');
+let divPressure = document.createElement('div');
+let titlePressure = document.createTextNode('Pressure');
+pPressure.appendChild(titlePressure);
+divPressure.appendChild(pPressure);
+pressure.appendChild(divPressure);
+
+let pPressuree = document.createElement('p');
+let divPressuree = document.createElement('div');
 let textPressure = document.createTextNode(resp.currently.pressure+ 'hPa');
-pPressure .appendChild(textPressure );
-labelPressure .appendChild(titlePressure );
-pressure .appendChild(labelPressure );
-pressure .appendChild(pPressure );
+pPressuree.appendChild(textPressure);
+divPressuree.appendChild(pPressuree);
+pressure.appendChild(divPressuree);
+
 
 
 });
