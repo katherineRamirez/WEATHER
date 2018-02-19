@@ -42,12 +42,18 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/9cdb
   // Ahora 'j' es un objeto JSON
   console.log(resp);
 
-/* Título del contenedor de los datos del clima */
+/* Imagen del contenedor de los datos del clima */
 let respuesta = document.getElementById('respuesta');
-let etiquetaTitle = document.createElement('h1');
-let title = document.createTextNode('HOY');
-etiquetaTitle.appendChild(title);
-respuesta.appendChild(etiquetaTitle);
+let resWeather = resp.currently.icon;
+for (let i = 0; i < weather.length; i++) {
+  if (resWeather === weather[i].time){
+    let iconWeather = document.createElement('img');
+    iconWeather.setAttribute('src', weather[i].image);
+    let divImageweather = document.createElement('div');
+    divImageweather.appendChild(iconWeather);
+    respuesta.appendChild(divImageweather);
+  }
+}
 
 /* DOM Insertando temperatura desde la Api darksky */
 let temperature = document.getElementById('temperature');

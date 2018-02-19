@@ -1,0 +1,10 @@
+img{
+    width: 2em;
+    display: inline;
+    padding-right: 0.5em;
+}
+
+.divMonday, .divTuesday, .divWednesday, .divThursday, .divFriday, .divSaturday, .divSunday{
+    display: flex;
+    flex-direction: row;
+}

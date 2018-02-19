@@ -5,7 +5,8 @@
 .imagen{
   position: absolute;
   width: 100%;
-  height: 97.5vh;
+  height: 97.75vh;
+  margin-left: -1.05em;
 }
 .contTitle{  
   background-color: #000000;
@@ -92,4 +93,50 @@ flex-direction: row;
 
 .One, .Two{
   display: none;
+}
+
+#Monday{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#Tuesday{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#Wednesday{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#Thursday{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#Friday{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#Saturday{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#Sunday{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+img{
+  width: 3em;
 }
