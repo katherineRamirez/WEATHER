@@ -5,13 +5,15 @@
 .imagen{
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 97.5vh;
 }
 .contTitle{  
   background-color: #000000;
   opacity: 0.5;  
   width: 70%;
   height: 70vh;
+  margin-top: 5em;
+
 }
 .title{
   font-size: 3em;
@@ -20,9 +22,7 @@
   text-align: center;
 }
 .container-temperatura{
-  position: relative;
   color: white;
-  margin-left: 11em;
   font-size: 4em;
 }
 .texto{
@@ -32,7 +32,64 @@
   position: relative;
   color: white;
   font-size: 1.5em;
-  left: 5em;
   top: 2em;
 }
 
+
+.dos{
+  text-align: center;
+
+}
+
+.tres{
+  text-align: center;
+
+}
+
+
+#wind{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;}
+
+
+#humidity{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;}
+
+
+
+#indexUv{
+  display: flex;
+  flpredictionex-direction: row;
+  justify-content: space-between;}
+
+#pressure{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;}
+
+#prediction{
+  background-color: white;
+  opacity: 0.5;  
+  width: 70%;
+  height: 15vh;
+  margin-top: -1.5em;
+  z-index: 1000;
+  color: black;
+  text-align: center;
+padding-top: 1.5em;
+font-size: 1.2em;
+}
+
+.cont{
+  display: flex;
+flex-direction: row;
+  justify-content: center;
+}
+
+
+.One, .Two{
+  display: none;
+}
