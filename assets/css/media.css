@@ -1,4 +1,32 @@
-@media (min-width: 200px) and (max-width: 500px) {
+@media (min-width: 200px) and (max-width: 600px) {
+[class*="col-"] {
+		width: 100%;
+	}
+	body{
+		width: 100%;
+		height: 100vh;
+		margin: 0;
+		padding: 0;
+	}
 
+	.contTitle{  
+  width: 60%;
+  height: 80vh;
+  margin-top: 2em;
+	}
+	.container-datos{
+  font-size: 1em;
+  top: 2em;
+	}
+	#prediction{
+  height: 12vh;
+  margin-top: -1.1em;
+  z-index: 1000;
+	padding-top: 1em;
+	font-size: 1em;
+	}
+	img{
+  width: 1.5em;
+	}
 
 }
